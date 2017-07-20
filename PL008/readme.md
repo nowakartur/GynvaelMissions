@@ -1,4 +1,5 @@
-# Write-Up rozwiązania misji PL 008 z Gynvael Stream PL [link do YT](https://www.youtube.com/watch?v=3hGK87NTXmw)
+# Write-Up rozwiązania misji PL 008 z Gynvael Stream PL
+[link do YT](https://www.youtube.com/watch?v=3hGK87NTXmw)
 
 Zadanie: [link do zadania](http://gynvael.vexillium.org/ext/70809d8a8c51f6963a882f906dd21c18bd37428b_misja008.txt)
 
@@ -45,7 +46,7 @@ centralnej komnaty.
 P.S. Rozwiązanie zadania przedstawie na początku kolejnego livestreama.
 ```
 
-Druga podpowiedź wskazuje, że rozwiązanie odczytamy z wygenerowanej przez Drona mapy centralnej komnaty, prawdopodobnie będziemy musieli odtworzyć całą mapę.
+Druga podpowiedź wskazuje, że rozwiązanie odczytamy z wygenerowanej przez drona mapy centralnej komnaty, prawdopodobnie będziemy musieli odtworzyć całą mapę.
 
 
 
@@ -61,13 +62,13 @@ Mamy więc skan pomieszczenia zrobiony co 1 metr, w każdą stronę co 10 stopni
 Opcje jakie nam zostają:
 - poruszanie się przy krawędzi i na tej podstawie budowanie planu (ryzykowne jeśli autor przygotował się na taką ewentualność lub jeśli plan pomieszczeń uniemożliwi zastosowanie tej metody)
 - napisanie algorytmu w którym będziemy sami sterowali poruszaniem się po komnatach w zależności od tego jak daleko mamy do ściany - rozwiązanie najbardziej eleganckie jednak wymagające największych nakładów pracy
-- metoda brute force - stworzenie mapy na podstawie wszystkich skanów jakie wykonał dron parsując jedynie zapisane pozycje drona z krótych skan był robiony
+- metoda brute force - stworzenie mapy na podstawie wszystkich skanów jakie wykonał dron parsując jedynie zapisane pozycje drona, z krótych skan był robiony
 
 **Brute Force**
 
 Użyjemy metody brute force. W pierwszej kolejności pobieramy plik startowy drona i skryptem w pythonie iterujemy po wszystkich możliwych kierunkach jakie mógł wykonać dron.
 Skrypt będzie sprawdzał czy ma już w bazie plik skanu i jeśli go ma nie będzie pobierał go ponownie.
-Dodatkowo w związku z dużym obiciążeniem strony autora i występującymi błędami typu "Internal Server Error 500" musimy mieć możliwość restartu skrptu od dowolnego momentu i wznowienia jego pracy bez konieczności zaczynania jego pracy na nowo (stąd też na początku działania skryptu skanujemy wszystkie pliki które mamy już pobrane).
+Dodatkowo w związku z dużym obiciążeniem strony autora i występującymi błędami typu "Internal Server Error 500" musimy mieć możliwość restartu skrptu od dowolnego momentu i wznowienia jego pracy bez konieczności zaczynania jej na nowo (stąd też na początku działania skryptu skanujemy wszystkie pliki które mamy już pobrane).
 
 Skrypt wygląda tak:
 
@@ -213,3 +214,8 @@ i otrzymana mapa:
 ![map](https://github.com/nowakartur/GynvaelMissions/raw/master/PL008/img/map.png)
 
 Hasło odczytujemy z centralnej komnaty.
+
+
+**Podsumowanie**
+
+Zadanie rozwiązaliśmy nie korzystając w żadnym momencie z samych skanów odległości. Wydaje się że takie podejście do tematu nie zasługuje na skalę trudności 9/10, ale jak to mówi autor: "whatever works - works" :)

@@ -121,7 +121,7 @@ while len(queue):
 
 
 
-Skrypt pobiera pliki utworzone przez drona (.txt) a następnie skanuje je w poszukiwaniu ciągu znaków określających kolejne pliki skanów, wyszukujemy linii wyglądających podobnie do "MOVE_SOUTH: 0d825143bf3476dc5df8ee736a61e4f3.txt". Używamy regexpa:
+Skrypt pobiera pliki utworzone przez drona (.txt) a następnie skanuje je w poszukiwaniu ciągu znaków określających kolejne pliki skanów, wyszukujemy linii wyglądających podobnie do "**MOVE_SOUTH: 0d825143bf3476dc5df8ee736a61e4f3.txt**". Używamy wyrażeń regularnych:
 ```
 "MOVE_[A-Z]{4,5}: (.+)"
 ```
@@ -135,10 +135,10 @@ for s in re.findall(patern, c):
         queue.append(s)
 ```
 
-Każdy pobrany plik jest poddawany takiemu samemu skanowaniu i po znalezieniu w nim nazw plików kolejnych skanów wrzucamy je do kolejki pobierania.
+Każdy pobrany plik jest poddawany takiemu samemu skanowaniu i po znalezieniu w nim nazw plików kolejnych skanów wrzucamy je do kolejki pobierania (tylko jeśli kończą się na ".txt", a nie "inf").
 
 
-Po pobraniu wszystkich plików (ponad 187 000):
+Po pobraniu wszystkich plików (**ponad 187 000**):
 
 ![scans](https://github.com/nowakartur/GynvaelMissions/raw/master/PL008/img/scans.png)
 
@@ -153,7 +153,7 @@ W każdym pliku skanu mamy otrzymujemy (w drugiej linii pliku) zapisaną pozycj�
 
 W związku z tym potrzebujemy:
 - ustalić maksymalne rozmiary mapy czyli znaleźć maksymalną pozycję X i Y na jakiej przebywał dron
-- strorzyć bitmapę z zaznaczonymi miejscami które dron odwiedził i gdzie go nie było (czyli gdzie natrafił na ścianę)
+- strorzyć bitmapę z zaznaczonymi (pokolowanymi) miejscami, które dron odwiedził i gdzie go nie było (czyli gdzie natrafił na ścianę)
 
 
 Skrypt python:
@@ -203,7 +203,7 @@ r.close
 
 ```
 
-Skrypt iteruje po wszystkich pobranych uprzednio plikach szukając w nich pozycji z jakich był robiony skan a nastepnie dodaje je do listy z której później tworzy mapę.
+Skrypt iteruje po wszystkich pobranych uprzednio plikach szukając w nich pozycji z jakich był robiony skan, a nastepnie dodaje je do listy z której później tworzy mapę.
 
 Wynik działania skryptu:
 
@@ -218,4 +218,4 @@ Hasło odczytujemy z centralnej komnaty.
 
 **Podsumowanie**
 
-Zadanie rozwiązaliśmy nie korzystając w żadnym momencie z samych skanów odległości. Wydaje się że takie podejście do tematu nie zasługuje na skalę trudności 9/10, ale jak to mówi autor: "whatever works - works" :)
+Zadanie rozwiązaliśmy nie korzystając w żadnym momencie z samych skanów odległości. Wydaje się, że takie podejście do tematu nie zasługuje na skalę trudności 9/10, ale jak to mówi autor: "**whatever works - works**" :)

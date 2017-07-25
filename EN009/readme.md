@@ -260,3 +260,10 @@ if set(decoded).issubset(printable):
 Script Execution:
 
 ![output](https://github.com/nowakartur/GynvaelMissions/raw/master/EN009/img/output.png)
+
+
+**Done**
+
+I have an answer:
+- timestamp of script execution: 1500483661 (19/07/2017 @ 5:01pm UTC)
+- decrypted message: Who needs to store keys anyway.

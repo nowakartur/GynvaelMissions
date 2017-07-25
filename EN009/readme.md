@@ -117,7 +117,7 @@ I have marked 4 blocks that seems interesting:
 
 **Block c)** - I think this is a block creating one-time-pad key array, it uses random values and do some unspecified math operations on it (I do not know why, but i will need to reproduce this calculations)
 
-**Block d)** - this is the only place where XOR operation is used, so it must be it :). Function **_mm_xor_si128** is SSE2 powered XOR operation: [msdn desc](goo.gl/5oxH5a)
+**Block d)** - this is place where XOR operation is used, so it must be it :). Function **_mm_xor_si128** is SSE2 powered XOR operation: [msdn desc](goo.gl/5oxH5a)
 
 
 Conclusion:

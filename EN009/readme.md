@@ -57,13 +57,13 @@ P.S. I'll show/explain the solution on the stream next week.
 
 First of all, I'd like to say that this is my first non-polish write-up, so sorry for my not perfect english and any other mistakes :) Of course any comments are welcome :)
 
-In this mission i have to find a way to decipher XORed data, but XORed with One Time Pad [wikipedia](https://en.wikipedia.org/wiki/One-time_pad) -  so any well known methods based on character frequencies etc. are useless in this case. Key for the one-time-pad ciphers are at least as long as encrypted message.
+In this mission i have to find a way to decipher XORed data, but XORed with One-Time-Pad [wikipedia link about it](https://en.wikipedia.org/wiki/One-time_pad) - so any well known methods based on character frequencies etc. are useless in this case. Key for the one-time-pad ciphers are at least as long as encrypted message.
 
 
 
 **Binary object file**
 
-In mission description i found binary file used to create encrypted message. This object file (created by the compiler before linking together with other files) is rather small, so there is a hope I can find something....  I've opened binary in lister to find any clues....
+In mission description I found binary file used to create encrypted message. This object file (created by the compiler before linking together with other files) is rather small, so there is a hope I can find something....  I've opened binary in lister to find any clues....
 
 ![binary file in lister](https://github.com/nowakartur/GynvaelMissions/raw/master/EN009/img/binarylister.png)
 
@@ -75,11 +75,11 @@ To look into this object file I used IDA Pro:
 
 There are a small number of functions in this binary... (main, printf, rand, srand, time64), and all of them a commonly used by any programmer so still there is a hope :)
 
-IDA pro has ability to decompile and create pseudocode from binary files...
+IDA Pro has ability to decompile and create pseudocode from binary files, ant after I used it...
 
 ![binary file in IDA Pro - 02](https://github.com/nowakartur/GynvaelMissions/raw/master/EN009/img/ida_02.png)
 
-I already renamed some variables, and for example there is text in variables T01 - T04:
+I already renamed some variables, and for example there is text in variables I named T01 - T04:
 ```
 t01 = 'RCES EHT';
 t02 = 'B SAH TE';
@@ -113,7 +113,7 @@ I have marked 4 blocks that seems interesting:
 
 **Block a)** - this is first usage of function time64() [function description](http://www.cplusplus.com/reference/ctime/time/) - is there some time-dependent steps ??
 
-**Block b)** - initialization od random numer generator with value received in previous block - Time function returns [unix timestamp](https://en.wikipedia.org/wiki/Unix_time) and this is seed for RNG
+**Block b)** - initialization od random number generator with value received in previous block - Time function returns [unix timestamp](https://en.wikipedia.org/wiki/Unix_time) and this is seed for RNG
 
 **Block c)** - I think this is a block creating one-time-pad key array, it uses random values and do some unspecified math operations on it (I do not know why, but i will need to reproduce this calculations)
 

@@ -75,7 +75,7 @@ To look into this object file I used IDA Pro:
 
 There are a small number of functions in this binary... (main, printf, rand, srand, time64), and all of them a commonly used by any programmer so still there is a hope :)
 
-IDA Pro has ability to decompile and create pseudocode from binary files, ant after I used it...
+IDA Pro has ability to decompile and create pseudocode from binary files, and after I used it...
 
 ![binary file in IDA Pro - 02](https://github.com/nowakartur/GynvaelMissions/raw/master/EN009/img/ida_02.png)
 

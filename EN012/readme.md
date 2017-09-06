@@ -51,7 +51,7 @@ All I need to do is find table with all available scancodes and just translate m
 
 I found scancode table here: [http://www.computer-engineering.org/ps2keyboard/scancodes2.html]
 
-But.... this table is quite big, so lets do it in JS
+But.... this table is quite big, so lets do it in Javascript :)
 
 **Javascript**
 
@@ -97,12 +97,13 @@ while (i<b.length){
 }
 ```
 
-When loop detect key OFF scancode (f0 XX) it just skip this two elements. In any other cases it just search in DOM using:
+When loop detect key OFF scancode (f0 XX) it just skip this two elements. In any other cases it just search appropriate key for given scancode in DOM using:
+
 ```javascript
  t.find("td:contains('"+ b[i].toUpperCase() +"')").prev("td").children().first().text()
 ```
 
-Finally I got answer:
+Finally I need to print the answer:
 ```javascript
 console.log(answer)
 ```
@@ -116,7 +117,7 @@ The answer is (in scancodes)
 
 **Answer**
 
-Clearing answer from unnecessary data gave:
+Clearing answer from unnecessary data gave me:
 
 ```
 Sorry, I don't speak Keyboard.
